@@ -1,17 +1,15 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
-import Lists  from "./components/Lists";
+import Lists from "./components/Lists";
+import { Route, Routes } from "react-router";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/lists" element={<Lists />} />
-        <Route path="/" element={<Login />} />
-      </Routes>
-    </Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/lists" element={<Lists />} />
+          <Route path="/" element={<Login />} />
+        </Routes>
   );
 }
 
