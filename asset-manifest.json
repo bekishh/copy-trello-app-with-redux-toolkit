@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/copy-trello-app-with-redux-toolkit/static/css/main.9f088a99.css",
-    "main.js": "/copy-trello-app-with-redux-toolkit/static/js/main.e5470935.js",
+    "main.js": "/copy-trello-app-with-redux-toolkit/static/js/main.c1f7ad43.js",
     "index.html": "/copy-trello-app-with-redux-toolkit/index.html",
     "static/media/trello-icon.svg": "/copy-trello-app-with-redux-toolkit/static/media/trello-icon.19357e69247507f2271700f56460a337.svg",
     "main.9f088a99.css.map": "/copy-trello-app-with-redux-toolkit/static/css/main.9f088a99.css.map",
-    "main.e5470935.js.map": "/copy-trello-app-with-redux-toolkit/static/js/main.e5470935.js.map"
+    "main.c1f7ad43.js.map": "/copy-trello-app-with-redux-toolkit/static/js/main.c1f7ad43.js.map"
   },
   "entrypoints": [
     "static/css/main.9f088a99.css",
-    "static/js/main.e5470935.js"
+    "static/js/main.c1f7ad43.js"
   ]
 }
