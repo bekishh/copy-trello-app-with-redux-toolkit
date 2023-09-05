@@ -14,8 +14,9 @@ function Login() {
 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
     dispatch(login({ email, password }));
+    e.preventDefault()
   };
 
   return (
@@ -100,7 +101,7 @@ const Input = styled("input")`
   }
 `;
 
-const LoginContainer = styled("div")`
+const LoginContainer = styled("form")`
   width: 100%;
   height: 100vh;
   display: flex;
