@@ -4,6 +4,7 @@ import { addList, addCard, deleteList } from "../redux/slices/lists-slice";
 import styled from "styled-components";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ListsModal from "./ListsModal";
+import CardModal from "./CardModal";
 
 const ListsManager = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const ListsManager = () => {
   );
   const [isModalClose, setIsModalClose] = useState(false);
   const [selectedListIndex, setSelectedListIndex] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(null);
 
   const addListButtonText =
     lists.length > 0 ? "Добавить еще одну колонку" : "Добавить список";
@@ -91,6 +93,14 @@ const ListsManager = () => {
     setIsModalClose(false);
   };
 
+  const openCardModal = (listIndex, cardIndex) => {
+    setSelectedCard({ listIndex, cardIndex });
+  };
+
+  const closeCardModal = () => {
+    setSelectedCard(null);
+  };
+
   return (
     <Container>
       {lists.map((list, listIndex) => (
@@ -105,7 +115,12 @@ const ListsManager = () => {
 
           <Cards>
             {list.cards.map((card, cardIndex) => (
-              <Card key={cardIndex}>{card.title}</Card>
+              <Card
+                key={cardIndex}
+                onClick={() => openCardModal(listIndex, cardIndex)}
+              >
+                {card.title}
+              </Card>
             ))}
             {showAddCardInputs[listIndex] && (
               <CardInput>
@@ -147,6 +162,17 @@ const ListsManager = () => {
               closeModal={() => setIsModalClose(false)}
               handleArchiveList={handleArchiveList}
               handleCardAdded={() => handleCardAdded(listIndex)}
+            />
+          )}
+
+          {selectedCard !== null && (
+            <CardModal
+              cardTitle={
+                lists[selectedCard.listIndex].cards[selectedCard.cardIndex]
+                  .title
+              }
+              listTitle={lists[selectedCard.listIndex].title}
+              closeModal={closeCardModal}
             />
           )}
         </List>
