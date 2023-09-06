@@ -142,6 +142,13 @@ const ListsManager = () => {
             <span>+</span>
             Добавить карточку
           </NewButton>
+          {isModalClose && (
+            <ListsModal
+              closeModal={() => setIsModalClose(false)}
+              handleArchiveList={handleArchiveList}
+              handleCardAdded={() => handleCardAdded(listIndex)}
+            />
+          )}
         </List>
       ))}
       {showAddListInput ? (
@@ -162,13 +169,6 @@ const ListsManager = () => {
           <span>+</span>
           {addListButtonText}
         </AddListButton>
-      )}
-      {isModalClose && (
-        <ListsModal
-          closeModal={() => setIsModalClose(false)}
-          handleArchiveList={handleArchiveList}
-          handleCardAdded={handleCardAdded}
-        />
       )}
     </Container>
   );

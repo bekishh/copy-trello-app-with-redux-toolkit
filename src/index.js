@@ -5,17 +5,17 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { SnackbarProvider } from "notistack";
-import { BrowserRouter } from "react-router-dom";
+import {  HashRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <SnackbarProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Provider store={store}>
           <App />
         </Provider>
-      </BrowserRouter>
+      </HashRouter>
     </SnackbarProvider>
   </React.StrictMode>
 );
