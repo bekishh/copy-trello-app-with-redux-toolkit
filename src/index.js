@@ -5,7 +5,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { SnackbarProvider } from "notistack";
-import {  HashRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

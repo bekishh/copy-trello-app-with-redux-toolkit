@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { styled } from "styled-components";
 import ListsManager from "./ListsManager";
@@ -7,10 +7,18 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import LogoutModal from "./LogoutModal";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal, openModal } from "../redux/slices/modal-slice";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import RocketLaunchOutlinedIcon from "@mui/icons-material/RocketLaunchOutlined";
+import BoltIcon from "@mui/icons-material/Bolt";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 const Lists = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const isModalOpen = useSelector((state) => state.modal.isOpen);
 
   const handleLogout = () => {
@@ -18,7 +26,7 @@ const Lists = () => {
   };
 
   const handleConfirmLogout = () => {
-    navigate("/login")
+    navigate("/login");
     dispatch(closeModal());
   };
 
@@ -74,24 +82,45 @@ const Lists = () => {
             src="https://img.icons8.com/fluency/48/000000/test-account.png"
             alt="test-account"
           />
-          <LogoutIcon
-            style={{ color: "#9eacba" }}
-            onClick={handleLogout}
-          >
+          <LogoutIcon style={{ color: "#9eacba" }} onClick={handleLogout}>
             LOG OUT
           </LogoutIcon>
         </div>
       </Header>
-      <TransparentHeader></TransparentHeader>
+      <TransparentHeader>
+        <div>
+          <h3>Redux-Toolkit practice</h3>
+          <StarBorderIcon fontSize="small" style={{ color: "#ffffff" }} />
+          <PeopleAltIcon fontSize="small" style={{ color: "#ffffff" }} />
+          <Button>По доске</Button>
+          <ExpandMoreIcon fontSize="medium" style={{ color: "#ffffff" }} />
+        </div>
+        <main>
+          <RocketLaunchOutlinedIcon
+            fontSize="small"
+            style={{ color: "#ffffff" }}
+          />
+          <BoltIcon style={{ color: "#ffffff" }} />
+          <button>
+            <FilterListIcon fontSize="small" style={{ color: "#ffffff" }} />
+            Фильтр
+          </button>
+          <Button>
+            <PersonAddOutlinedIcon fontSize="small"/>
+            Поделиться
+          </Button>
+          <MoreHorizIcon style={{color: '#ffffff', cursor: 'pointer'}}/>
+        </main>
+      </TransparentHeader>
       <ListsManager />
-      {isModalOpen  &&
-      ReactDOM.createPortal(
-        <LogoutModal
-          onLogoutConfirmed={handleConfirmLogout}
-          onLogoutCancelled={handleCancelLogout}
-        />,
-        document.getElementById("logout-modal")
-      )}
+      {isModalOpen &&
+        ReactDOM.createPortal(
+          <LogoutModal
+            onLogoutConfirmed={handleConfirmLogout}
+            onLogoutCancelled={handleCancelLogout}
+          />,
+          document.getElementById("logout-modal")
+        )}
     </Container>
   );
 };
@@ -177,6 +206,36 @@ const TransparentHeader = styled("header")`
   height: 3.5rem;
   background-color: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  padding: 0rem 2rem;
+  justify-content: space-between;
+  & main {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    & button {
+      display: flex;
+      align-items: center;
+      padding: 6px 15px;
+      border-radius: 4px;
+      gap: 10px;
+      border: none;
+      color: #ffffff;
+      background: none;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+  & div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    & h3 {
+      color: #ffffff;
+    }
+  }
 `;
 
 const IconsStyled = styled("img")`
@@ -190,4 +249,16 @@ const IconsStyled = styled("img")`
 const NewInconsStyled = styled("img")`
   width: 28px;
   height: 28px;
+`;
+
+const Button = styled("button")`
+  padding: 7px 12px;
+  background-color: #dfe1e6;
+  border-radius: 4px;
+  border: none;
+  color: #485873;
+  cursor: pointer;
+  &:hover {
+    background-color: #ffffff;
+  }
 `;
